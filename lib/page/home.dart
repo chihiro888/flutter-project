@@ -14,7 +14,10 @@ class _HomeState extends State<Home> {
       // appBar: AppBar(
       //     // title: const Text('Flutter layout demo'),
       //     ),
-      body: Container(),
+      body: Container(
+          child: Center(
+        child: const Text('text'),
+      )),
     );
   }
 }
