@@ -11,12 +11,10 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Flutter layout demo'),
-      ),
-      body: const Center(
-        child: Text('Hello World'),
-      ),
+      // appBar: AppBar(
+      //     // title: const Text('Flutter layout demo'),
+      //     ),
+      body: Container(),
     );
   }
 }
