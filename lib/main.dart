@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sample/page/home.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:sample/page/onBoarding.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -23,9 +24,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      initialRoute: '/home',
+      initialRoute: '/onBoarding',
       getPages: [
         GetPage(name: '/home', page: () => Home()),
+        GetPage(name: '/onBoarding', page: () => OnBoarding()),
       ],
     );
   }
