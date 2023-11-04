@@ -10,6 +10,19 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   TextEditingController _controller = TextEditingController();
 
+  String buttonText = 'Button'; // 초기 버튼 텍스트
+
+  // 버튼 클릭 시 버튼 텍스트를 변경하는 함수
+  void handleClickButton() {
+    setState(() {
+      if (buttonText == 'Button') {
+        buttonText = 'Clicked!';
+      } else {
+        buttonText = 'Button';
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,9 +58,9 @@ class _HomeState extends State<Home> {
                   Expanded(
                     child: ElevatedButton(
                       onPressed: () {
-                        // 버튼을 눌렀을 때 수행할 작업을 여기에 추가
+                        handleClickButton();
                       },
-                      child: Text('Button'),
+                      child: Text(buttonText),
                     ),
                   ),
                 ],
