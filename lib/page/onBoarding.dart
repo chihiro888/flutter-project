@@ -112,7 +112,11 @@ class _OnBoardingState extends State<OnBoarding> {
                   backgroundColor: Color(0xFF52A8F6)),
               child: Text(
                 _currentPage == 2 ? '시작하기' : '다음',
-                style: TextStyle(color: Colors.white, fontSize: 16),
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               onPressed: () {
                 if (_currentPage < 2) {
@@ -155,7 +159,7 @@ class _OnBoardingState extends State<OnBoarding> {
               child: Center(
                 child: Text(
                   description,
-                  style: TextStyle(fontSize: 18),
+                  style: TextStyle(fontSize: 18, color: Color(0xFF636363)),
                 ),
               ),
             ),
@@ -177,5 +181,3 @@ class _OnBoardingState extends State<OnBoarding> {
     );
   }
 }
-
-// BoxShape.circle
