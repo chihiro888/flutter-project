@@ -8,16 +8,54 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  TextEditingController _controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //     // title: const Text('Flutter layout demo'),
-      //     ),
-      body: Container(
-          child: Center(
-        child: const Text('text'),
-      )),
+      appBar: AppBar(title: Text("hello")),
+      body: SafeArea(
+        // SafeArea 안에 안전하게 배치하고 싶은 모든 위젯을 넣습니다.
+        child: Column(
+          children: <Widget>[
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  const Text('text'),
+                  SizedBox(
+                    width: 200,
+                    child: TextField(
+                      controller: _controller,
+                      decoration: InputDecoration(
+                        labelText: 'Enter your text',
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            // 버튼을 화면의 하단에 고정
+            Padding(
+              padding:
+                  const EdgeInsets.all(16.0), // 버튼 주변에 간격을 원하는 만큼 줄 수 있습니다.
+              child: Row(
+                children: [
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        // 버튼을 눌렀을 때 수행할 작업을 여기에 추가
+                      },
+                      child: Text('Button'),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
