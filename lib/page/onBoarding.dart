@@ -163,10 +163,11 @@ class _OnBoardingState extends State<OnBoarding> {
     );
   }
 
-  Widget _buildPage(
-      {required String image,
-      required String title,
-      required String description}) {
+  Widget _buildPage({
+    required String image,
+    required String title,
+    required String description,
+  }) {
     return Stack(
       alignment: Alignment.bottomCenter,
       children: [

@@ -38,52 +38,98 @@ class _SignInState extends State<SignIn> {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 10.0),
-            Text(
-              'More fast and powerful service',
-              style: TextStyle(
-                fontSize: 16,
-                color: Color(0xFF9B9B9B),
-              ),
-            ),
-            SizedBox(height: 10.0),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.0),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  primary: Color(0xFF3C2823), // 배경색
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20), // border-radius 설정
-                  ),
-                ),
-                onPressed: () {
-                  //
-                },
-                child: Row(
-                  mainAxisAlignment:
-                      MainAxisAlignment.start, // 아이콘이 왼쪽에 위치하도록 설정
-                  children: <Widget>[
-                    Image.asset(
-                      'assets/images/signIn/kakaotalk.png', // 아이콘 이미지 경로
-                      height: 24, // 아이콘 높이
-                      width: 24, // 아이콘 너비
-                    ),
-                    SizedBox(width: 8), // 아이콘과 텍스트 사이의 간격 조절
-                    Expanded(
-                      child: Text(
-                        'KakaoTalk으로 로그인',
-                        style: TextStyle(
-                          color: Color(0xFFFBEC47), // 폰트색
-                        ),
-                        textAlign: TextAlign.center, // 텍스트를 중앙에 정렬
-                      ),
-                    ),
-                  ],
+            Expanded(
+              child: Text(
+                'More fast and powerful service',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Color(0xFF9B9B9B),
                 ),
               ),
             ),
+            _signInBtn(
+              image: 'assets/images/signIn/kakaotalk.png',
+              label: 'KakaoTalk으로 로그인',
+              backgroundColor: 0xFF3C2823,
+              fontColor: 0xFFFBEC47,
+            ),
+            _signInBtn(
+              image: 'assets/images/signIn/google.png',
+              label: 'Google로 로그인',
+              backgroundColor: 0xFFFFFFFF,
+              fontColor: 0xFF000000,
+            ),
+            _signInBtn(
+              image: 'assets/images/signIn/apple.png',
+              label: 'AppleId로 로그인',
+              backgroundColor: 0xFF000000,
+              fontColor: 0xFFFFFFFF,
+            ),
+            _signInBtn(
+              image: 'assets/images/signIn/facebook.png',
+              label: 'Facebook으로 로그인',
+              backgroundColor: 0xFF52A8F6,
+              fontColor: 0xFFFFFFFF,
+            ),
+            _signInBtn(
+              image: 'assets/images/signIn/phone.png',
+              label: '전화번호로 로그인',
+              backgroundColor: 0xFFFF918A,
+              fontColor: 0xFFFFFFFF,
+            ),
+            _signInBtn(
+              image: 'assets/images/signIn/email.png',
+              label: '이메일로 로그인',
+              backgroundColor: 0xFFFFD467,
+              fontColor: 0xFFFFFFFF,
+            ),
+            SizedBox(height: 30.0)
           ],
         ),
       ),
     );
   }
+}
+
+Widget _signInBtn({
+  required String image,
+  required String label,
+  required int backgroundColor,
+  required int fontColor,
+}) {
+  return Padding(
+    padding: EdgeInsets.symmetric(horizontal: 24.0),
+    child: ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: Color(backgroundColor), // 배경색
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20), // border-radius 설정
+        ),
+      ),
+      onPressed: () {
+        //
+      },
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start, // 아이콘이 왼쪽에 위치하도록 설정
+        children: <Widget>[
+          Image.asset(
+            image, // 아이콘 이미지 경로
+            height: 24, // 아이콘 높이
+            width: 24, // 아이콘 너비
+          ),
+          SizedBox(width: 8), // 아이콘과 텍스트 사이의 간격 조절
+          Expanded(
+            child: Text(
+              label,
+              style: TextStyle(
+                color: Color(fontColor), // 폰트색
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center, // 텍스트를 중앙에 정렬
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
 }
