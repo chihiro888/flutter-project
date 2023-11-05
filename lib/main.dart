@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:sample/page/home.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:sample/page/onBoarding.dart';
+import 'package:sample/page/signIn.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
       getPages: [
         GetPage(name: '/home', page: () => Home()),
         GetPage(name: '/onBoarding', page: () => OnBoarding()),
+        GetPage(name: '/signIn', page: () => SignIn()),
       ],
     );
   }
