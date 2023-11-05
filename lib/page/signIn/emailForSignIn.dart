@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sample/component/appBarDefault.dart';
 
 class EmailForSignIn extends StatefulWidget {
   const EmailForSignIn({Key? key}) : super(key: key);
@@ -10,6 +11,16 @@ class EmailForSignIn extends StatefulWidget {
 class _EmailForSignInState extends State<EmailForSignIn> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: appBarDefault('이메일로 로그인'),
+      body: SafeArea(
+        child: Column(
+          children: [
+            //
+          ],
+        ),
+      ),
+    );
   }
 }

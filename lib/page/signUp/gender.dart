@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sample/component/appBarDefault.dart';
 
 class Gender extends StatefulWidget {
   const Gender({Key? key}) : super(key: key);
@@ -10,6 +11,16 @@ class Gender extends StatefulWidget {
 class _GenderState extends State<Gender> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: appBarDefault('성별'),
+      body: SafeArea(
+        child: Column(
+          children: [
+            //
+          ],
+        ),
+      ),
+    );
   }
 }
