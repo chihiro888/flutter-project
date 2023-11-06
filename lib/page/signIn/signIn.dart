@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -55,11 +56,15 @@ class _SignInState extends State<SignIn> {
       body: SafeArea(
         child: Column(
           children: [
-            SizedBox(height: 50.0),
+            SizedBox(height: 10.0),
             Center(
-              child:
-                  Image.asset('assets/images/signIn/signIn.png', height: 200),
+              child: Lottie.asset(
+                'assets/images/signIn/logo.json',
+                height: 200, // Adjust the height as per your requirement
+                width: 300, // Adjust the width as per your requirement
+              ),
             ),
+            SizedBox(height: 20.0),
             Text(
               '타이탄 네트웍스',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),

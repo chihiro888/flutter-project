@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:sample/component/appBarDefault.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 
@@ -21,10 +22,14 @@ class _PhoneForSignInState extends State<PhoneForSignIn> {
   late FocusNode _phoneNumberFocusNode;
 
   // ** Handler
-  void _updateButtonState() {
+  _updateButtonState() {
     setState(() {
       _isButtonEnabled = _phoneNumberController.text.isNotEmpty;
     });
+  }
+
+  _handleClickSend() {
+    Get.toNamed('/phoneForAuth');
   }
 
   // ** Life Cycle
@@ -168,8 +173,7 @@ class _PhoneForSignInState extends State<PhoneForSignIn> {
                     ),
                     onPressed: _isButtonEnabled
                         ? () {
-                            // 버튼을 눌렀을 때의 로직을 여기에 추가하세요.
-                            // _phoneNumberController.text를 사용하여 입력된 전화번호를 가져올 수 있습니다.
+                            _handleClickSend();
                           }
                         : null,
                   ),
