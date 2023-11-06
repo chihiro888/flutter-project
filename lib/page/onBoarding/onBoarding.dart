@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 
 class OnBoarding extends StatefulWidget {
   const OnBoarding({Key? key}) : super(key: key);
@@ -82,17 +83,17 @@ class _OnBoardingState extends State<OnBoarding> {
                 },
                 children: [
                   _buildPage(
-                    image: 'assets/images/onBoarding/ob1.png',
+                    animationAsset: 'assets/images/onBoarding/ob1.json',
                     title: '우리가 만드는 MVP',
                     description: '서비스를 최소한의 기능으로 개발하여\n초기 버전을 빠르게 출시하는 개발',
                   ),
                   _buildPage(
-                    image: 'assets/images/onBoarding/ob2.png',
+                    animationAsset: 'assets/images/onBoarding/ob2.json',
                     title: '주요 기능을 단계적으로 릴리즈',
                     description: '처음부터 끝까지 기능을 만들지 않고\n모두가 함께 단계적으로 주요기능을 릴리즈',
                   ),
                   _buildPage(
-                    image: 'assets/images/onBoarding/ob3.png',
+                    animationAsset: 'assets/images/onBoarding/ob3.json',
                     title: '마시고 노는 개발 문화',
                     description: '앞으로 진행되는 프로젝트는 빠르게\n시간을 확보해서 마시고 놀자!',
                   ),
@@ -164,7 +165,7 @@ class _OnBoardingState extends State<OnBoarding> {
   }
 
   Widget _buildPage({
-    required String image,
+    required String animationAsset,
     required String title,
     required String description,
   }) {
@@ -174,7 +175,11 @@ class _OnBoardingState extends State<OnBoarding> {
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(image, height: 200), // 이미지 표시
+            Lottie.asset(
+              animationAsset,
+              height: 250, // Adjust the height as per your requirement
+              width: 250, // Adjust the width as per your requirement
+            ),
             const SizedBox(height: 20),
             Text(
               title,
