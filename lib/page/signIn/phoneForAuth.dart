@@ -76,9 +76,9 @@ class _PhoneForAuthState extends State<PhoneForAuth> {
                     },
                     showCursor: true,
                     focusNode: pinputFocusNode,
-                    validator: (s) {
-                      return s == '222222' ? null : 'Pin is incorrect';
-                    },
+                    // validator: (s) {
+                    //   return s == '222222' ? null : 'Pin is incorrect';
+                    // },
                   ),
                 ],
               ),
