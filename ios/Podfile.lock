@@ -17,10 +17,13 @@ PODS:
     - GoogleUtilities/Environment
   - "GoogleUtilities/NSData+zlib (7.11.6)"
   - PromisesObjC (2.3.1)
+  - smart_auth (0.0.1):
+    - Flutter
 
 DEPENDENCIES:
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - Flutter (from `Flutter`)
+  - smart_auth (from `.symlinks/plugins/smart_auth/ios`)
 
 SPEC REPOS:
   trunk:
@@ -35,6 +38,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_core/ios"
   Flutter:
     :path: Flutter
+  smart_auth:
+    :path: ".symlinks/plugins/smart_auth/ios"
 
 SPEC CHECKSUMS:
   Firebase: 25899099b77d255a636e3579c3d9dce10ec150d5
@@ -44,6 +49,7 @@ SPEC CHECKSUMS:
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   GoogleUtilities: 202e7a9f5128accd11160fb9c19612de1911aa19
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
+  smart_auth: 4bedbc118723912d0e45a07e8ab34039c19e04f2
 
 PODFILE CHECKSUM: 70d9d25280d0dd177a5f637cdb0f0b0b12c6a189
 
