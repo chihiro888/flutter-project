@@ -12,23 +12,19 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   // ** Handler
   _handleClickKakao() {
-    // Get.offAllNamed('/feed');
-    Get.toNamed('/feed');
+    Get.offAllNamed('/feed');
   }
 
   _handleClickGoogle() {
-    // Get.offAllNamed('/friend');
-    Get.toNamed('/friend');
+    Get.offAllNamed('/friend');
   }
 
   _handleClickApple() {
-    // Get.offAllNamed('/chat');
-    Get.toNamed('/chat');
+    Get.offAllNamed('/chat');
   }
 
   _handleClickFacebook() {
-    // Get.offAllNamed('/develop');
-    Get.toNamed('/develop');
+    Get.offAllNamed('/develop');
   }
 
   _handleClickPhone() {

@@ -47,12 +47,7 @@ class _HomeState extends State<Home> {
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _pages[_selectedIndex],
-            ],
-          ),
+          child: _pages[_selectedIndex],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(

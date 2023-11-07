@@ -17,6 +17,15 @@ class _ProfileState extends State<Profile> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Column(
+      children: <Widget>[
+        ElevatedButton(
+          child: const Text('로그아웃'),
+          onPressed: () {
+            Get.offAllNamed('/signIn');
+          },
+        )
+      ],
+    );
   }
 }

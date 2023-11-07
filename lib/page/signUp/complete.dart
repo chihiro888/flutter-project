@@ -12,7 +12,7 @@ class Complete extends StatefulWidget {
 
 class _CompleteState extends State<Complete> {
   _handleClickHome() {
-    Get.toNamed('/home');
+    Get.offAllNamed('/feed');
   }
 
   @override
