@@ -15,7 +15,7 @@ class _BirthState extends State<Birth> {
   int selectedDay = DateTime.now().day;
 
   _handleClickNext() {
-    Get.toNamed('/complete');
+    Get.toNamed('/profile');
   }
 
   @override

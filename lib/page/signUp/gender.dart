@@ -12,7 +12,7 @@ class Gender extends StatefulWidget {
 class _GenderState extends State<Gender> {
   // ** Handler
   handleClickGender(String gender) {
-    Get.toNamed('/profile');
+    Get.toNamed('/birth');
   }
 
   @override
