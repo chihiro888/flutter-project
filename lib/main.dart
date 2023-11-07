@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:sample/page/main/home.dart';
 import 'package:sample/page/onBoarding/onBoarding.dart';
 import 'package:sample/page/signIn/emailForSignIn.dart';
 import 'package:sample/page/signIn/phoneForAuth.dart';
@@ -55,6 +56,9 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/gender', page: () => const Gender()),
         GetPage(name: '/birth', page: () => const Birth()),
         GetPage(name: '/complete', page: () => const Complete()),
+
+        // 홈
+        GetPage(name: '/home', page: () => const Home()),
       ],
     );
   }
