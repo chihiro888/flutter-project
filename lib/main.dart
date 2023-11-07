@@ -9,6 +9,7 @@ import 'package:sample/page/signIn/phoneForReSend.dart';
 import 'package:sample/page/signIn/phoneForSignIn.dart';
 import 'package:sample/page/signIn/signIn.dart';
 import 'package:sample/page/signUp/birth.dart';
+import 'package:sample/page/signUp/complete.dart';
 import 'package:sample/page/signUp/emailForAuth.dart';
 import 'package:sample/page/signUp/emailForSignUp.dart';
 import 'package:sample/page/signUp/gender.dart';
@@ -53,6 +54,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/nickname', page: () => const Nickname()),
         GetPage(name: '/gender', page: () => const Gender()),
         GetPage(name: '/birth', page: () => const Birth()),
+        GetPage(name: '/complete', page: () => const Complete()),
       ],
     );
   }
