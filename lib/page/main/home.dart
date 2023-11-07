@@ -41,8 +41,12 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Title'),
+        title: const Text('헤더'),
+        backgroundColor: Colors.white, // Set background color to white
+        foregroundColor: Colors.black, // Set font color to black
+        elevation: 0, // Set elevation to 0
       ),
       body: SafeArea(
         child: Padding(
