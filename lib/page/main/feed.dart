@@ -10,6 +10,12 @@ class Feed extends StatefulWidget {
 
 class _FeedState extends State<Feed> {
   @override
+  void initState() {
+    super.initState();
+    print('Feed');
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container();
   }

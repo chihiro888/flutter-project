@@ -58,7 +58,11 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/complete', page: () => const Complete()),
 
         // 홈
-        GetPage(name: '/home', page: () => const Home()),
+        GetPage(name: '/feed', page: () => const Home(selectedIndex: 0)),
+        GetPage(name: '/friend', page: () => const Home(selectedIndex: 1)),
+        GetPage(name: '/chat', page: () => const Home(selectedIndex: 2)),
+        GetPage(name: '/develop', page: () => const Home(selectedIndex: 3)),
+        GetPage(name: '/profile', page: () => const Home(selectedIndex: 4)),
       ],
     );
   }

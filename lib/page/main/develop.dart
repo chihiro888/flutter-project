@@ -10,6 +10,12 @@ class Develop extends StatefulWidget {
 
 class _DevelopState extends State<Develop> {
   @override
+  void initState() {
+    super.initState();
+    print('Develop');
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container();
   }

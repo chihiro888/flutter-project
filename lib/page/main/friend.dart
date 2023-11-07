@@ -10,6 +10,12 @@ class Friend extends StatefulWidget {
 
 class _FriendState extends State<Friend> {
   @override
+  void initState() {
+    super.initState();
+    print('Friend');
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container();
   }

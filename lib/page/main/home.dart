@@ -1,28 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sample/page/main/chat.dart';
+import 'package:sample/page/main/develop.dart';
+import 'package:sample/page/main/feed.dart';
+import 'package:sample/page/main/friend.dart';
+import 'package:sample/page/main/profile.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  final int selectedIndex;
+
+  const Home({Key? key, required this.selectedIndex}) : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  int _selectedIndex = 0;
+  var _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    Text('Home Page'), // 홈 페이지에 해당하는 위젯을 추가하세요.
-    Text('Match Page'), // 매치 페이지에 해당하는 위젯을 추가하세요.
-    Text('Chat Page'), // 채팅 페이지에 해당하는 위젯을 추가하세요.
-    Text('Dev Page'), // 개발 페이지에 해당하는 위젯을 추가하세요.
-    Text('Profile Page'), // 프로필 페이지에 해당하는 위젯을 추가하세요.
+    Feed(),
+    Friend(),
+    Chat(),
+    Develop(),
+    Profile(),
   ];
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedIndex = widget.selectedIndex;
   }
 
   @override

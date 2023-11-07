@@ -10,6 +10,12 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   @override
+  void initState() {
+    super.initState();
+    print('Profile');
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container();
   }
