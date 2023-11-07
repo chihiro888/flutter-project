@@ -18,6 +18,7 @@ class _CompleteState extends State<Complete> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: appBarDefault('회원가입 완료'),
       body: SafeArea(
         child: Padding(
