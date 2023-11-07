@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:sample/page/main/home.dart';
-import 'package:sample/page/main/profile.dart';
+import 'package:sample/page/signUp/profile.dart';
 import 'package:sample/page/onBoarding/onBoarding.dart';
 import 'package:sample/page/signIn/emailForSignIn.dart';
 import 'package:sample/page/signIn/phoneForAuth.dart';

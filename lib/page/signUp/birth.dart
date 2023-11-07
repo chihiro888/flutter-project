@@ -14,7 +14,7 @@ class _BirthState extends State<Birth> {
   int selectedMonth = DateTime.now().month;
   int selectedDay = DateTime.now().day;
 
-  _handleClickSignUp() {
+  _handleClickNext() {
     Get.toNamed('/complete');
   }
 
@@ -128,7 +128,7 @@ class _BirthState extends State<Birth> {
                         ),
                       ),
                       onPressed: () {
-                        _handleClickSignUp();
+                        _handleClickNext();
                       }),
                 ),
               ),
