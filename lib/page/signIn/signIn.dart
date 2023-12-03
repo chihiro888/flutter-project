@@ -43,12 +43,12 @@ class _SignInState extends State<SignIn> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        title: const Text('Title'),
+        title: const Text(''),
         leading: IconButton(
           icon: Icon(Icons.close), // 엑스(X) 모양의 아이콘을 추가
           onPressed: () {
             // 뒤로가기 버튼이 눌렸을 때 수행할 동작 추가
-            Navigator.of(context).pop();
+            Get.offAllNamed('/onBoarding');
           },
           color: Colors.black, // 아이콘의 색상을 검은색으로 지정
         ),

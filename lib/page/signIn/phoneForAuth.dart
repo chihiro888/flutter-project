@@ -14,18 +14,6 @@ class _PhoneForAuthState extends State<PhoneForAuth> {
   // ** Focus
   final pinputFocusNode = FocusNode();
 
-  final defaultPinTheme = PinTheme(
-    width: 56,
-    height: 56,
-    textStyle: TextStyle(
-        fontSize: 20, color: Colors.black, fontWeight: FontWeight.w600),
-    decoration: BoxDecoration(
-      color: Color(0xFFEEEEEE),
-      border: Border.all(color: Color.fromRGBO(234, 239, 243, 1)),
-      borderRadius: BorderRadius.circular(12),
-    ),
-  );
-
   // ** Handler
   _handleCheckPin(String pin) {
     Get.toNamed('/nickname');
@@ -46,6 +34,20 @@ class _PhoneForAuthState extends State<PhoneForAuth> {
 
   @override
   Widget build(BuildContext context) {
+    double responsiveWidth = MediaQuery.of(context).size.width * 0.8;
+
+      final defaultPinTheme = PinTheme(
+    width: responsiveWidth / 7,
+    height: 56,
+    textStyle: TextStyle(
+        fontSize: 20, color: Colors.black, fontWeight: FontWeight.w600),
+    decoration: BoxDecoration(
+      color: Color(0xFFEEEEEE),
+      border: Border.all(color: Color.fromRGBO(234, 239, 243, 1)),
+      borderRadius: BorderRadius.circular(12),
+    ),
+  );
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: appBarDefault('전화번호로 로그인'),
