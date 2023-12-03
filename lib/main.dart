@@ -44,26 +44,56 @@ class MyApp extends StatelessWidget {
 
         // 로그인
         GetPage(name: '/signIn', page: () => const SignIn()),
-        GetPage(name: '/emailForSignIn', page: () => const EmailForSignIn()),
+
+        // 전화번호로 로그인 > 전화번호 입력
         GetPage(name: '/phoneForSignIn', page: () => const PhoneForSignIn()),
+
+        // 전화번호로 로그인 > 인증번호 인증
         GetPage(name: '/phoneForAuth', page: () => const PhoneForAuth()),
+
+        // 전화번호로 로그인 > 인증번호 재전송
         GetPage(name: '/phoneForReSend', page: () => const PhoneForReSend()),
+
+        // 전화번호로 로그인 > 인증번호 만료
         GetPage(name: '/phoneForExp', page: () => const PhoneForExp()),
 
-        // 회원가입
+        // 이메일로 로그인 > 이메일, 비밀번호 입력
+        GetPage(name: '/emailForSignIn', page: () => const EmailForSignIn()),
+
+        // 회원가입 > 이메일, 비밀번호
         GetPage(name: '/emailForSignUp', page: () => const EmailForSignUp()),
+
+        // 회원가입 > 이메일 인증
         GetPage(name: '/emailForAuth', page: () => const EmailForAuth()),
+
+        // 회원가입 > 닉네임
         GetPage(name: '/nickname', page: () => const Nickname()),
+
+        // 회원가입 > 성별
         GetPage(name: '/gender', page: () => const Gender()),
+
+        // 회원가입 > 생년월일
         GetPage(name: '/birth', page: () => const Birth()),
+
+        // 회원가입 > 프로필사진
         GetPage(name: '/profile', page: () => const Profile()),
+
+        // 회원가입 > 완료
         GetPage(name: '/complete', page: () => const Complete()),
 
-        // 홈
+        // 홈 > 피드
         GetPage(name: '/feed', page: () => const Home(selectedIndex: 0)),
+
+        // 홈 > 친구
         GetPage(name: '/friend', page: () => const Home(selectedIndex: 1)),
+
+        // 홈 > 채팅
         GetPage(name: '/chat', page: () => const Home(selectedIndex: 2)),
+
+        // 홈 > 개발
         GetPage(name: '/develop', page: () => const Home(selectedIndex: 3)),
+
+        // 홈 > 프로필
         GetPage(name: '/profile', page: () => const Home(selectedIndex: 4)),
       ],
     );
