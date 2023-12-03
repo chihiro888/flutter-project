@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -11,12 +13,28 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
   // ** Handler
-  _handleClickKakao() {
-    Get.offAllNamed('/feed');
+  _handleClickKakao() async {
+    // Get.offAllNamed('/feed');
   }
 
-  _handleClickGoogle() {
-    Get.offAllNamed('/friend');
+  _handleClickGoogle() async {
+    // Get.offAllNamed('/friend');
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser!.authentication;
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+      final UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithCredential(credential);
+
+      // Google 로그인 성공 시 추가적인 처리
+      print("Google 로그인 성공: ${userCredential.user!.displayName}");
+    } catch (e) {
+      print("Google 로그인 실패: $e");
+    }
   }
 
   _handleClickApple() {
