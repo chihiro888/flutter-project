@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sample/component/appBarDefault.dart';
 import 'package:get/get.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class EmailForSignUp extends StatefulWidget {
   const EmailForSignUp({Key? key}) : super(key: key);
@@ -22,8 +23,29 @@ class _EmailForSignUpState extends State<EmailForSignUp> {
   late FocusNode _emailFocusNode;
 
   // ** Handler
-  _handleClickSendEmail() {
-    Get.toNamed('/emailForAuth');
+  _handleClickSendEmail() async {
+    try {
+      UserCredential userCredential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _emailController.text,
+        password: _passwordController.text,
+      );
+
+      // If the registration is successful, you can navigate to the next screen
+      // or perform any other actions you need.
+      print("User registered: ${userCredential.user?.email}");
+
+      // For email verification, you can send a verification email
+      await userCredential.user?.sendEmailVerification();
+
+      // Navigate to the email verification screen or show a success message.
+      // For example:
+      Get.toNamed('/emailForAuth');
+    } catch (e) {
+      print("Error registering user: $e");
+      // Handle registration errors, for example, show an error message.
+      // You can customize this based on your application's requirements.
+    }
   }
 
   _updateButtonState() {

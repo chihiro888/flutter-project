@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sample/component/appBarDefault.dart';
 import 'package:get/get.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class EmailForAuth extends StatefulWidget {
   const EmailForAuth({Key? key}) : super(key: key);
@@ -11,8 +12,35 @@ class EmailForAuth extends StatefulWidget {
 
 class _EmailForAuthState extends State<EmailForAuth> {
   // ** Handler
-  _handleClickVerify() {
-    Get.toNamed('/nickname');
+  _handleClickVerify() async {
+    try {
+      User? user = FirebaseAuth.instance.currentUser;
+
+      if (user != null) {
+        await user.reload();
+        user = FirebaseAuth.instance.currentUser;
+
+        if (user?.emailVerified == true) {
+          // User's email is verified, navigate to the next screen
+          Get.toNamed('/nickname');
+        } else {
+          // Email is not verified, show a message or take appropriate action
+          // For example, you can display a snackbar or a dialog asking the user
+          // to check their email for verification.
+          // For simplicity, a print statement is used here.
+          print(
+              "Email is not verified. Please check your email for verification.");
+        }
+      } else {
+        // User is not signed in, handle accordingly
+        // For simplicity, a print statement is used here.
+        print("User not signed in.");
+      }
+    } catch (e) {
+      // Handle any errors that might occur during the verification process
+      // For simplicity, a print statement is used here.
+      print("Error verifying email: $e");
+    }
   }
 
   @override
