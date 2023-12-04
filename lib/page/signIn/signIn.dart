@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
@@ -166,6 +167,9 @@ Widget _signInBtn({
   required int fontColor,
   required Function onClick,
 }) {
+  if (Platform.isAndroid && image == 'assets/images/signIn/apple.png') {
+    return Container();
+  }
   return Padding(
     padding: EdgeInsets.symmetric(horizontal: 24.0),
     child: ElevatedButton(
