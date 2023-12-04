@@ -3,8 +3,7 @@ import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-// import 'package:sign_in_with_apple/sign_in_with_apple.dart';
-// import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -16,7 +15,7 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   // ** Handler
   _handleClickKakao() async {
-    // Get.offAllNamed('/feed');
+    Fluttertoast.showToast(msg: "개발중입니다.");
   }
 
   _handleClickGoogle() async {
@@ -39,11 +38,11 @@ class _SignInState extends State<SignIn> {
   }
 
   _handleClickApple() async {
-    //
+    Fluttertoast.showToast(msg: "개발중입니다.");
   }
 
   _handleClickFacebook() async {
-    //
+    Fluttertoast.showToast(msg: "개발중입니다.");
   }
 
   _handleClickPhone() {
