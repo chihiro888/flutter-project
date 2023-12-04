@@ -5,6 +5,7 @@ import 'package:lottie/lottie.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:sample/provider/firebaseProvider.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -14,6 +15,9 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  // ** Provider
+  FirebaseProvider firebaseProvider = FirebaseProvider();
+
   // ** Handler
   _handleClickKakao() async {
     Fluttertoast.showToast(msg: "개발중입니다.");
@@ -30,6 +34,14 @@ class _SignInState extends State<SignIn> {
       );
       final UserCredential userCredential =
           await FirebaseAuth.instance.signInWithCredential(credential);
+
+      bool isExist = await firebaseProvider.existUser(userCredential.user!.uid);
+
+      if (isExist) {
+        Get.toNamed('/feed');
+      } else {
+        Get.toNamed('/nickname');
+      }
 
       // Google 로그인 성공 시 추가적인 처리
       print("Google 로그인 성공: ${userCredential.user!.displayName}");
