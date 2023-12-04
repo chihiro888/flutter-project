@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:sample/component/appBarDefault.dart';
 import 'package:country_code_picker/country_code_picker.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:sample/controller/authController.dart';
 
 class PhoneForSignIn extends StatefulWidget {
   const PhoneForSignIn({Key? key}) : super(key: key);
@@ -14,6 +16,7 @@ class PhoneForSignIn extends StatefulWidget {
 class _PhoneForSignInState extends State<PhoneForSignIn> {
   // ** Controller
   TextEditingController _phoneNumberController = TextEditingController();
+  AuthController authController = Get.put(AuthController());
 
   // ** State
   bool _isButtonEnabled = false;
@@ -28,8 +31,31 @@ class _PhoneForSignInState extends State<PhoneForSignIn> {
     });
   }
 
-  _handleClickSend() {
-    Get.toNamed('/phoneForAuth');
+  _handleClickSend() async {
+    final FirebaseAuth _auth = FirebaseAuth.instance;
+
+    try {
+      String phoneNumber =
+          '${authController.getCountryCode()}${_phoneNumberController.text}';
+      await _auth.verifyPhoneNumber(
+        phoneNumber: phoneNumber,
+        verificationCompleted: (PhoneAuthCredential credential) async {
+          //
+        },
+        verificationFailed: (FirebaseAuthException e) {
+          print('Verification Failed: $e');
+        },
+        codeSent: (String verificationId, int? resendToken) {
+          authController.setVerificationId(verificationId);
+          Get.toNamed('/phoneForAuth');
+        },
+        codeAutoRetrievalTimeout: (String verificationId) {
+          print('Code Auto Retrieval Timeout: $verificationId');
+        },
+      );
+    } catch (e) {
+      print('Error sending verification code: $e');
+    }
   }
 
   // ** Life Cycle
@@ -85,7 +111,7 @@ class _PhoneForSignInState extends State<PhoneForSignIn> {
                 children: [
                   CountryCodePicker(
                     onChanged: (data) {
-                      print(data);
+                      authController.setCountryCode(data.dialCode);
                     },
                     // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
                     initialSelection: 'KR',

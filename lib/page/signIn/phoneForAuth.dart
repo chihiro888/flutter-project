@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sample/component/appBarDefault.dart';
 import 'package:pinput/pinput.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:sample/controller/authController.dart';
 
 class PhoneForAuth extends StatefulWidget {
   const PhoneForAuth({Key? key}) : super(key: key);
@@ -15,8 +17,30 @@ class _PhoneForAuthState extends State<PhoneForAuth> {
   final pinputFocusNode = FocusNode();
 
   // ** Handler
-  _handleCheckPin(String pin) {
-    Get.toNamed('/nickname');
+  _handleCheckPin(String pin) async {
+    final FirebaseAuth _auth = FirebaseAuth.instance;
+    AuthController authController = Get.put(AuthController());
+
+    try {
+      print("v = " + authController.getVerificationId());
+      print("pin = " + pin);
+
+      // Create a PhoneAuthCredential using the verificationId and entered PIN
+      PhoneAuthCredential credential = PhoneAuthProvider.credential(
+        verificationId: authController.getVerificationId(),
+        smsCode: pin,
+      );
+
+      // Sign in the user with the credential
+      await _auth.signInWithCredential(credential);
+
+      // Navigate to the next screen after successful verification
+      Get.toNamed('/nickname');
+    } catch (e) {
+      // Handle exceptions (e.g., FirebaseAuthException)
+      print('Error verifying code: $e');
+      // You may want to show an error message to the user
+    }
   }
 
   // ** Life Cycle
@@ -36,17 +60,17 @@ class _PhoneForAuthState extends State<PhoneForAuth> {
   Widget build(BuildContext context) {
     double responsiveWidth = MediaQuery.of(context).size.width * 0.8;
 
-      final defaultPinTheme = PinTheme(
-    width: responsiveWidth / 7,
-    height: 56,
-    textStyle: TextStyle(
-        fontSize: 20, color: Colors.black, fontWeight: FontWeight.w600),
-    decoration: BoxDecoration(
-      color: Color(0xFFEEEEEE),
-      border: Border.all(color: Color.fromRGBO(234, 239, 243, 1)),
-      borderRadius: BorderRadius.circular(12),
-    ),
-  );
+    final defaultPinTheme = PinTheme(
+      width: responsiveWidth / 7,
+      height: 56,
+      textStyle: TextStyle(
+          fontSize: 20, color: Colors.black, fontWeight: FontWeight.w600),
+      decoration: BoxDecoration(
+        color: Color(0xFFEEEEEE),
+        border: Border.all(color: Color.fromRGBO(234, 239, 243, 1)),
+        borderRadius: BorderRadius.circular(12),
+      ),
+    );
 
     return Scaffold(
       backgroundColor: Colors.white,
