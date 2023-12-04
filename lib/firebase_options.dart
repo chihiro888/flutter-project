@@ -2,7 +2,7 @@
 // ignore_for_file: lines_longer_than_80_chars, avoid_classes_with_only_static_members
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
-    show defaultTargetPlatform, kIsWeb, TargetPlatform;
+    show defaultTargetPlatform, TargetPlatform;
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -16,16 +16,11 @@ import 'package:flutter/foundation.dart'
 /// ```
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
-    if (kIsWeb) {
-      return web;
-    }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
         return ios;
-      case TargetPlatform.macOS:
-        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -43,16 +38,6 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyA3e2tGL0p2hGGINHLm71nIKPgIIlM5hOQ',
-    appId: '1:723425582684:web:1cc1af6e25594d0fed5099',
-    messagingSenderId: '723425582684',
-    projectId: 'sample-5aae8',
-    authDomain: 'sample-5aae8.firebaseapp.com',
-    storageBucket: 'sample-5aae8.appspot.com',
-    measurementId: 'G-YBN3X5BR0X',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyAK0CMRGBV4iLFlzQpBML5_yVKMh_2AwlU',
     appId: '1:723425582684:android:825ac4b203b12498ed5099',
@@ -63,23 +48,12 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyAiRG_4yAQlcOULZPwI4dy6FZm6wc5jrGM',
-    appId: '1:723425582684:ios:942a487bef775aafed5099',
+    appId: '1:723425582684:ios:99cabc3760dbe4d8ed5099',
     messagingSenderId: '723425582684',
     projectId: 'sample-5aae8',
     storageBucket: 'sample-5aae8.appspot.com',
     iosClientId:
         '723425582684-91pa3hkgqtsju33d3ap2v9o4gs861d4t.apps.googleusercontent.com',
     iosBundleId: 'com.example.sample',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAiRG_4yAQlcOULZPwI4dy6FZm6wc5jrGM',
-    appId: '1:723425582684:ios:155c95605c780bdded5099',
-    messagingSenderId: '723425582684',
-    projectId: 'sample-5aae8',
-    storageBucket: 'sample-5aae8.appspot.com',
-    iosClientId:
-        '723425582684-ranm0covmi3mmnhtjvumai1aav037nc6.apps.googleusercontent.com',
-    iosBundleId: 'com.example.sample.RunnerTests',
   );
 }
