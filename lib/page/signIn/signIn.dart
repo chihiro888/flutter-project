@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+// import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+// import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -18,7 +20,6 @@ class _SignInState extends State<SignIn> {
   }
 
   _handleClickGoogle() async {
-    // Get.offAllNamed('/friend');
     try {
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
       final GoogleSignInAuthentication googleAuth =
@@ -37,12 +38,12 @@ class _SignInState extends State<SignIn> {
     }
   }
 
-  _handleClickApple() {
-    Get.offAllNamed('/chat');
+  _handleClickApple() async {
+    //
   }
 
-  _handleClickFacebook() {
-    Get.offAllNamed('/develop');
+  _handleClickFacebook() async {
+    //
   }
 
   _handleClickPhone() {

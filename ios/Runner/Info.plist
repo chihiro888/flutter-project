@@ -52,8 +52,26 @@
       <array>
         <!-- google login -->
         <string>com.googleusercontent.apps.723425582684-91pa3hkgqtsju33d3ap2v9o4gs861d4t</string>
+
+		<!-- facebook login -->
+		<string>1035592564315734</string>
       </array>
       </dict>
+    </array>
+    
+    <key>FacebookAppID</key>
+    <string>1035592564315734</string>
+    
+    <key>FacebookClientToken</key>
+    <string>630a555c3889c39bd8b2f2cdc2c819c7</string>
+    
+    <key>FacebookDisplayName</key>
+    <string>Sample</string>
+
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+      <string>fbapi</string>
+      <string>fb-messenger-share-api</string>
     </array>
 </dict>
 </plist>
