@@ -63,11 +63,13 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyAiRG_4yAQlcOULZPwI4dy6FZm6wc5jrGM',
-    appId: '1:723425582684:ios:99cabc3760dbe4d8ed5099',
+    appId: '1:723425582684:ios:942a487bef775aafed5099',
     messagingSenderId: '723425582684',
     projectId: 'sample-5aae8',
     storageBucket: 'sample-5aae8.appspot.com',
-    iosBundleId: 'com.example.sample',
+    iosClientId:
+        '723425582684-91pa3hkgqtsju33d3ap2v9o4gs861d4t.apps.googleusercontent.com',
+    iosBundleId: 'com.example.ttt',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
@@ -76,6 +78,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '723425582684',
     projectId: 'sample-5aae8',
     storageBucket: 'sample-5aae8.appspot.com',
+    iosClientId:
+        '723425582684-ranm0covmi3mmnhtjvumai1aav037nc6.apps.googleusercontent.com',
     iosBundleId: 'com.example.sample.RunnerTests',
   );
 }
