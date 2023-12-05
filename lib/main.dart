@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:sample/page/main/home.dart';
+import 'package:sample/page/main/Layout.dart';
+import 'package:sample/page/setting/setting.dart';
 import 'package:sample/page/signUp/emailForSignUpAccount.dart';
 import 'package:sample/page/signUp/profile.dart';
 import 'package:sample/page/onBoarding/onBoarding.dart';
@@ -89,20 +90,23 @@ class MyApp extends StatelessWidget {
         // 회원가입 > 완료
         GetPage(name: '/complete', page: () => const Complete()),
 
-        // 홈 > 피드
-        GetPage(name: '/feed', page: () => const Home(selectedIndex: 0)),
+        // 레이아웃 > 홈
+        GetPage(name: '/home', page: () => const Layout(selectedIndex: 0)),
 
-        // 홈 > 친구
-        GetPage(name: '/friend', page: () => const Home(selectedIndex: 1)),
+        // 레이아웃 > 문제
+        GetPage(name: '/problem', page: () => const Layout(selectedIndex: 1)),
 
-        // 홈 > 채팅
-        GetPage(name: '/chat', page: () => const Home(selectedIndex: 2)),
+        // 레이아웃 > 커뮤니티
+        GetPage(name: '/community', page: () => const Layout(selectedIndex: 2)),
 
-        // 홈 > 개발
-        GetPage(name: '/develop', page: () => const Home(selectedIndex: 3)),
+        // 레이아웃 > 랭킹
+        GetPage(name: '/rank', page: () => const Layout(selectedIndex: 3)),
 
-        // 홈 > 프로필
-        GetPage(name: '/profile', page: () => const Home(selectedIndex: 4)),
+        // 레이아웃 > 프로필
+        GetPage(name: '/profile', page: () => const Layout(selectedIndex: 4)),
+
+        // 설정
+        GetPage(name: '/setting', page: () => const Setting()),
       ],
     );
   }

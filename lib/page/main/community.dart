@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class Friend extends StatefulWidget {
-  const Friend({Key? key}) : super(key: key);
+class Community extends StatefulWidget {
+  const Community({Key? key}) : super(key: key);
 
   @override
-  _FriendState createState() => _FriendState();
+  _CommunityState createState() => _CommunityState();
 }
 
-class _FriendState extends State<Friend> {
+class _CommunityState extends State<Community> {
   @override
   void initState() {
     super.initState();
-    print('Friend');
+    print('Community');
   }
 
   @override

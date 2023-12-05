@@ -27,32 +27,34 @@ class _SignInState extends State<SignIn> {
   }
 
   _handleClickGoogle() async {
-    try {
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-      final GoogleSignInAuthentication googleAuth =
-          await googleUser!.authentication;
-      final AuthCredential credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth.accessToken,
-        idToken: googleAuth.idToken,
-      );
-      final UserCredential userCredential =
-          await FirebaseAuth.instance.signInWithCredential(credential);
+    // 테스트
+    Get.toNamed('/home');
+    // try {
+    //   final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+    //   final GoogleSignInAuthentication googleAuth =
+    //       await googleUser!.authentication;
+    //   final AuthCredential credential = GoogleAuthProvider.credential(
+    //     accessToken: googleAuth.accessToken,
+    //     idToken: googleAuth.idToken,
+    //   );
+    //   final UserCredential userCredential =
+    //       await FirebaseAuth.instance.signInWithCredential(credential);
 
-      String uid = userCredential.user!.uid;
-      bool isExist = await firebaseProvider.existUser(uid);
+    //   String uid = userCredential.user!.uid;
+    //   bool isExist = await firebaseProvider.existUser(uid);
 
-      if (isExist) {
-        Get.toNamed('/feed');
-      } else {
-        authController.setUid(uid);
-        Get.toNamed('/nickname');
-      }
+    //   if (isExist) {
+    //     Get.toNamed('/feed');
+    //   } else {
+    //     authController.setUid(uid);
+    //     Get.toNamed('/nickname');
+    //   }
 
-      // Google 로그인 성공 시 추가적인 처리
-      print("Google 로그인 성공: ${userCredential.user!.displayName}");
-    } catch (e) {
-      print("Google 로그인 실패: $e");
-    }
+    //   // Google 로그인 성공 시 추가적인 처리
+    //   print("Google 로그인 성공: ${userCredential.user!.displayName}");
+    // } catch (e) {
+    //   print("Google 로그인 실패: $e");
+    // }
   }
 
   _handleClickApple() async {
