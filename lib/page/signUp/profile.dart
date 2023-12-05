@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sample/component/appBarDefault.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:sample/controller/authController.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -13,10 +14,16 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
+    AuthController authController = Get.put(AuthController());
+
     // ** State
     bool _isButtonEnabled = true;
 
     _handleClickSignUp() {
+      print('uid = ' + authController.getUid());
+      print('nickname = ' + authController.getNickname());
+      print('gender = ' + authController.getGender());
+      print('birth = ' + authController.getBirth());
       Get.toNamed('/complete');
     }
 

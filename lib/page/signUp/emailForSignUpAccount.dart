@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sample/component/appBarDefault.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:sample/controller/authController.dart';
 
 class EmailForSignUpAccount extends StatefulWidget {
   const EmailForSignUpAccount({Key? key}) : super(key: key);
@@ -13,6 +14,7 @@ class EmailForSignUpAccount extends StatefulWidget {
 class _EmailForSignUpAccountState extends State<EmailForSignUpAccount> {
   // ** Controller
   TextEditingController _emailController = TextEditingController();
+  AuthController authController = Get.put(AuthController());
 
   // ** State
   bool _isButtonEnabled = false;

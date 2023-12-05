@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sample/component/appBarDefault.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:sample/controller/authController.dart';
 
 class EmailForAuth extends StatefulWidget {
   const EmailForAuth({Key? key}) : super(key: key);
@@ -11,6 +12,8 @@ class EmailForAuth extends StatefulWidget {
 }
 
 class _EmailForAuthState extends State<EmailForAuth> {
+  AuthController authController = Get.put(AuthController());
+
   // ** Handler
   _handleClickVerify() async {
     try {

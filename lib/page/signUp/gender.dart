@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sample/component/appBarDefault.dart';
+import 'package:sample/controller/authController.dart';
 
 class Gender extends StatefulWidget {
   const Gender({Key? key}) : super(key: key);
@@ -10,8 +11,11 @@ class Gender extends StatefulWidget {
 }
 
 class _GenderState extends State<Gender> {
+  AuthController authController = Get.put(AuthController());
+
   // ** Handler
   handleClickGender(String gender) {
+    authController.setGender(gender);
     Get.toNamed('/birth');
   }
 

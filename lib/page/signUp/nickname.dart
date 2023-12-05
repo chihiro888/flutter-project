@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:sample/component/appBarDefault.dart';
+import 'package:sample/controller/authController.dart';
 
 class Nickname extends StatefulWidget {
   const Nickname({Key? key}) : super(key: key);
@@ -13,6 +14,7 @@ class Nickname extends StatefulWidget {
 class _NicknameState extends State<Nickname> {
   // ** Controller
   TextEditingController _nicknameController = TextEditingController();
+  AuthController authController = Get.put(AuthController());
 
   // ** State
   bool _isButtonEnabled = false;
@@ -28,6 +30,7 @@ class _NicknameState extends State<Nickname> {
   }
 
   _handleClickNext() {
+    authController.setNickname(_nicknameController.text);
     Get.toNamed('/gender');
   }
 

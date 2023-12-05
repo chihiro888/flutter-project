@@ -5,6 +5,7 @@ import 'package:lottie/lottie.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:sample/controller/authController.dart';
 import 'package:sample/provider/firebaseProvider.dart';
 
 class SignIn extends StatefulWidget {
@@ -15,6 +16,8 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  AuthController authController = Get.put(AuthController());
+
   // ** Provider
   FirebaseProvider firebaseProvider = FirebaseProvider();
 
@@ -35,11 +38,13 @@ class _SignInState extends State<SignIn> {
       final UserCredential userCredential =
           await FirebaseAuth.instance.signInWithCredential(credential);
 
-      bool isExist = await firebaseProvider.existUser(userCredential.user!.uid);
+      String uid = userCredential.user!.uid;
+      bool isExist = await firebaseProvider.existUser(uid);
 
       if (isExist) {
         Get.toNamed('/feed');
       } else {
+        authController.setUid(uid);
         Get.toNamed('/nickname');
       }
 

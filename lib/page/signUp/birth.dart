@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sample/component/appBarDefault.dart';
+import 'package:sample/controller/authController.dart';
 
 class Birth extends StatefulWidget {
   const Birth({Key? key}) : super(key: key);
@@ -10,11 +11,14 @@ class Birth extends StatefulWidget {
 }
 
 class _BirthState extends State<Birth> {
+  AuthController authController = Get.put(AuthController());
+
   int selectedYear = DateTime.now().year;
   int selectedMonth = DateTime.now().month;
   int selectedDay = DateTime.now().day;
 
   _handleClickNext() {
+    authController.setBirth('${selectedYear}${selectedMonth}${selectedDay}');
     Get.toNamed('/profile');
   }
 
