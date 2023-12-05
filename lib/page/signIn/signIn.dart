@@ -119,15 +119,15 @@ class _SignInState extends State<SignIn> {
                 ),
               ),
             ),
-            _signInBtn(
-              image: 'assets/images/signIn/kakaotalk.png',
-              label: 'KakaoTalk으로 로그인',
-              backgroundColor: 0xFF3C2823,
-              fontColor: 0xFFFBEC47,
-              onClick: () {
-                _handleClickKakao();
-              },
-            ),
+            // _signInBtn(
+            //   image: 'assets/images/signIn/kakaotalk.png',
+            //   label: 'KakaoTalk으로 로그인',
+            //   backgroundColor: 0xFF3C2823,
+            //   fontColor: 0xFFFBEC47,
+            //   onClick: () {
+            //     _handleClickKakao();
+            //   },
+            // ),
             _signInBtn(
               image: 'assets/images/signIn/google.png',
               label: 'Google로 로그인',
@@ -137,24 +137,24 @@ class _SignInState extends State<SignIn> {
                 _handleClickGoogle();
               },
             ),
-            _signInBtn(
-              image: 'assets/images/signIn/apple.png',
-              label: 'AppleId로 로그인',
-              backgroundColor: 0xFF000000,
-              fontColor: 0xFFFFFFFF,
-              onClick: () {
-                _handleClickApple();
-              },
-            ),
-            _signInBtn(
-              image: 'assets/images/signIn/facebook.png',
-              label: 'Facebook으로 로그인',
-              backgroundColor: 0xFF52A8F6,
-              fontColor: 0xFFFFFFFF,
-              onClick: () {
-                _handleClickFacebook();
-              },
-            ),
+            // _signInBtn(
+            //   image: 'assets/images/signIn/apple.png',
+            //   label: 'AppleId로 로그인',
+            //   backgroundColor: 0xFF000000,
+            //   fontColor: 0xFFFFFFFF,
+            //   onClick: () {
+            //     _handleClickApple();
+            //   },
+            // ),
+            // _signInBtn(
+            //   image: 'assets/images/signIn/facebook.png',
+            //   label: 'Facebook으로 로그인',
+            //   backgroundColor: 0xFF52A8F6,
+            //   fontColor: 0xFFFFFFFF,
+            //   onClick: () {
+            //     _handleClickFacebook();
+            //   },
+            // ),
             _signInBtn(
               image: 'assets/images/signIn/phone.png',
               label: '전화번호로 로그인',
@@ -164,15 +164,15 @@ class _SignInState extends State<SignIn> {
                 _handleClickPhone();
               },
             ),
-            _signInBtn(
-              image: 'assets/images/signIn/email.png',
-              label: '이메일로 로그인',
-              backgroundColor: 0xFFFFD467,
-              fontColor: 0xFFFFFFFF,
-              onClick: () {
-                _handleClickEmail();
-              },
-            ),
+            // _signInBtn(
+            //   image: 'assets/images/signIn/email.png',
+            //   label: '이메일로 로그인',
+            //   backgroundColor: 0xFFFFD467,
+            //   fontColor: 0xFFFFFFFF,
+            //   onClick: () {
+            //     _handleClickEmail();
+            //   },
+            // ),
             SizedBox(height: 30.0)
           ],
         ),

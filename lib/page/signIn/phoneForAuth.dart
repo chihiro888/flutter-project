@@ -4,6 +4,7 @@ import 'package:sample/component/appBarDefault.dart';
 import 'package:pinput/pinput.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sample/controller/authController.dart';
+import 'package:sample/provider/firebaseProvider.dart';
 
 class PhoneForAuth extends StatefulWidget {
   const PhoneForAuth({Key? key}) : super(key: key);
@@ -21,6 +22,9 @@ class _PhoneForAuthState extends State<PhoneForAuth> {
     final FirebaseAuth _auth = FirebaseAuth.instance;
     AuthController authController = Get.put(AuthController());
 
+    // ** Provider
+    FirebaseProvider firebaseProvider = FirebaseProvider();
+
     try {
       print("v = " + authController.getVerificationId());
       print("pin = " + pin);
@@ -32,10 +36,20 @@ class _PhoneForAuthState extends State<PhoneForAuth> {
       );
 
       // Sign in the user with the credential
-      await _auth.signInWithCredential(credential);
+      UserCredential userCredential =
+          await _auth.signInWithCredential(credential);
 
-      // Navigate to the next screen after successful verification
-      Get.toNamed('/nickname');
+      String uid = userCredential.user!.uid;
+      bool isExist = await firebaseProvider.existUser(uid);
+
+      if (isExist) {
+        // User is already registered, navigate to the feed screen
+        Get.toNamed('/feed');
+      } else {
+        // User is not registered, set the UID and navigate to the nickname screen
+        authController.setUid(uid);
+        Get.toNamed('/nickname');
+      }
     } catch (e) {
       // Handle exceptions (e.g., FirebaseAuthException)
       print('Error verifying code: $e');
