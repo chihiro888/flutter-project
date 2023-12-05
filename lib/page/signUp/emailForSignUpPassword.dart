@@ -3,16 +3,15 @@ import 'package:sample/component/appBarDefault.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class EmailForSignUp extends StatefulWidget {
-  const EmailForSignUp({Key? key}) : super(key: key);
+class EmailForSignUpPassword extends StatefulWidget {
+  const EmailForSignUpPassword({Key? key}) : super(key: key);
 
   @override
-  _EmailForSignUpState createState() => _EmailForSignUpState();
+  _EmailForSignUpPasswordState createState() => _EmailForSignUpPasswordState();
 }
 
-class _EmailForSignUpState extends State<EmailForSignUp> {
+class _EmailForSignUpPasswordState extends State<EmailForSignUpPassword> {
   // ** Controller
-  TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _confirmPasswordController = TextEditingController();
 
@@ -20,14 +19,14 @@ class _EmailForSignUpState extends State<EmailForSignUp> {
   bool _isButtonEnabled = false;
 
   // ** Focus
-  late FocusNode _emailFocusNode;
+  late FocusNode _passwordFocusNode;
 
   // ** Handler
   _handleClickSendEmail() async {
     try {
       UserCredential userCredential =
           await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: _emailController.text,
+        email: "",
         password: _passwordController.text,
       );
 
@@ -50,8 +49,7 @@ class _EmailForSignUpState extends State<EmailForSignUp> {
 
   _updateButtonState() {
     setState(() {
-      _isButtonEnabled = _emailController.text.isNotEmpty &&
-          _passwordController.text.isNotEmpty &&
+      _isButtonEnabled = _passwordController.text.isNotEmpty &&
           _confirmPasswordController.text.isNotEmpty;
     });
   }
@@ -60,15 +58,15 @@ class _EmailForSignUpState extends State<EmailForSignUp> {
   @override
   void initState() {
     super.initState();
-    _emailFocusNode = FocusNode();
-    _emailController.addListener(_updateButtonState);
+    _passwordFocusNode = FocusNode();
+    _passwordController.addListener(_updateButtonState);
   }
 
   @override
   void dispose() {
-    _emailFocusNode.dispose();
-    _emailController.removeListener(_updateButtonState);
-    _emailController.dispose();
+    _passwordFocusNode.dispose();
+    _passwordController.removeListener(_updateButtonState);
+    _passwordController.dispose();
     super.dispose();
   }
 
@@ -85,69 +83,18 @@ class _EmailForSignUpState extends State<EmailForSignUp> {
             children: [
               SizedBox(width: 0.0, height: 16.0),
               Text(
-                "이메일과 비밀번호를 입력해주세요",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                "비밀번호를 입력해주세요",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
               ),
               SizedBox(height: 8),
               Text(
-                "가입을 위해 이메일이 필요해요.",
+                "이메일 로그인 시 사용하실 비밀번호입니다.",
                 style: TextStyle(
-                    fontSize: 16,
-                    color: Color(0xFFA1A1A1),
-                    fontWeight: FontWeight.bold),
-              ),
-              Text(
-                "이메일은 가입 여부 확인에만 활용되며 노출되지 않아요.",
-                style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 12,
                     color: Color(0xFFA1A1A1),
                     fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 16),
-              Stack(
-                alignment: Alignment.centerRight,
-                children: [
-                  TextField(
-                    controller: _emailController,
-                    onChanged: (text) {
-                      _updateButtonState();
-                    },
-                    focusNode:
-                        _emailFocusNode, // Assign the FocusNode to the TextField
-                    autofocus: true,
-                    decoration: InputDecoration(
-                      hintText: '이메일',
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                            color: Colors.grey), // 포커스된 상태에서의 테두리를 투명하게 만듭니다.
-                      ),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                            color: Colors
-                                .grey), // 포커스되지 않은 상태의 테두리 색상을 흰색으로 설정합니다.
-                      ),
-                    ),
-                  ),
-                  Visibility(
-                    visible: _emailController.text.isNotEmpty,
-                    child: IconButton(
-                      icon: Icon(
-                        Icons.cancel,
-                        color: Color(0xFFBBBBBB),
-                        size: 16,
-                      ),
-                      onPressed: () {
-                        setState(
-                          () {
-                            _emailController.clear();
-                            _isButtonEnabled = false;
-                          },
-                        );
-                      },
-                    ),
-                  ),
-                ],
-              ),
               Stack(
                 alignment: Alignment.centerRight,
                 children: [

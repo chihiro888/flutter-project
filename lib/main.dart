@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:sample/page/main/home.dart';
+import 'package:sample/page/signUp/emailForSignUpAccount.dart';
 import 'package:sample/page/signUp/profile.dart';
 import 'package:sample/page/onBoarding/onBoarding.dart';
 import 'package:sample/page/signIn/emailForSignIn.dart';
@@ -13,7 +14,7 @@ import 'package:sample/page/signIn/signIn.dart';
 import 'package:sample/page/signUp/birth.dart';
 import 'package:sample/page/signUp/complete.dart';
 import 'package:sample/page/signUp/emailForAuth.dart';
-import 'package:sample/page/signUp/emailForSignUp.dart';
+import 'package:sample/page/signUp/emailForSignUpPassword.dart';
 import 'package:sample/page/signUp/gender.dart';
 import 'package:sample/page/signUp/nickname.dart';
 import 'firebase_options.dart';
@@ -60,8 +61,15 @@ class MyApp extends StatelessWidget {
         // 이메일로 로그인 > 이메일, 비밀번호 입력
         GetPage(name: '/emailForSignIn', page: () => const EmailForSignIn()),
 
-        // 회원가입 > 이메일, 비밀번호
-        GetPage(name: '/emailForSignUp', page: () => const EmailForSignUp()),
+        // 회원가입 > 이메일
+        GetPage(
+            name: '/emailForSignUpAccount',
+            page: () => const EmailForSignUpAccount()),
+
+        // 회원가입 > 비밀번호
+        GetPage(
+            name: '/emailForSignUpPassword',
+            page: () => const EmailForSignUpPassword()),
 
         // 회원가입 > 이메일 인증
         GetPage(name: '/emailForAuth', page: () => const EmailForAuth()),
