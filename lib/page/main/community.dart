@@ -86,7 +86,9 @@ class _PostCardState extends State<PostCard> {
                 ),
               ],
             ),
-            subtitle: Text('토익 500점'),
+            subtitle: Text(
+              '토익 300점 · 정답률 83%',
+            ),
             trailing: Icon(Icons.more_vert),
           ),
           // Post Image

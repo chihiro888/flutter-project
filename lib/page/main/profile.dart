@@ -90,7 +90,7 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
                   ],
                 ),
                 Text(
-                  '토익점수 : 300 점',
+                  '토익 300점 · 정답률 83%',
                   style: TextStyle(fontSize: 16),
                 ),
               ],

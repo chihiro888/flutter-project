@@ -70,33 +70,38 @@ class QuizController extends GetxController {
 
 class Problem extends StatelessWidget {
   final QuizController quizController = Get.put(QuizController());
+
   late Timer _timer;
   int _timerSeconds = 30;
 
   @override
   Widget build(BuildContext context) {
-    int number = quizController.currentIndex.value;
     List<Questions> questionsList = quizController.getQuestions();
-    // Questions questions = questionsList[number];
 
     _startTimer();
 
     return Obx(
-      () => Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Text(
-            questionsList[number].question,
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 20),
-          Text(
-            "Time left: $_timerSeconds seconds",
-            style: TextStyle(fontSize: 16),
-          ),
-          SizedBox(height: 10),
-          ...?_buildAnswerButtons(),
-        ],
+      () => Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: 16,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            SizedBox(height: 20),
+            Text(
+              "남은 시간 : $_timerSeconds 초",
+              style: TextStyle(fontSize: 16),
+            ),
+            SizedBox(width: 0.0, height: 30),
+            Text(
+              questionsList[quizController.currentIndex.value].question,
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 30),
+            ...?_buildAnswerButtons(),
+          ],
+        ),
       ),
     );
   }
