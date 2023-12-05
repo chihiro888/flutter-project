@@ -45,6 +45,7 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
       children: <Widget>[
         Row(
           children: <Widget>[
+            SizedBox(width: 16, height: 0.0),
             CircleAvatar(
               radius: 30,
               backgroundImage: AssetImage(

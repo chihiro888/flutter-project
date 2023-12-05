@@ -54,10 +54,7 @@ class _LayoutState extends State<Layout> {
       backgroundColor: Colors.white,
       appBar: appBar,
       body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
-          child: _pages[_selectedIndex],
-        ),
+        child: _pages[_selectedIndex],
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
