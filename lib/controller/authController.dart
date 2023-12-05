@@ -80,8 +80,6 @@ class AuthController extends GetxController {
     final picker = ImagePicker();
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
 
-    setIsButtonEnabled(true);
-
     _mainProfile.value = pickedFile?.path ?? "";
   }
 

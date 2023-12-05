@@ -28,7 +28,7 @@ class _ProfileState extends State<Profile> {
       print('gender = ' + authController.getGender());
       print('birth = ' + authController.getBirth());
       print(authController.getMainProfile());
-      // Get.toNamed('/complete');
+      Get.toNamed('/complete');
     }
 
     return Scaffold(

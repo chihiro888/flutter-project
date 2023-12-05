@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sample/component/appBarDefault.dart';
 import 'package:lottie/lottie.dart';
 import 'package:get/get.dart';
+import 'package:sample/controller/authController.dart';
 
 class Complete extends StatefulWidget {
   const Complete({Key? key}) : super(key: key);
@@ -11,6 +12,8 @@ class Complete extends StatefulWidget {
 }
 
 class _CompleteState extends State<Complete> {
+  AuthController authController = Get.put(AuthController());
+
   _handleClickHome() {
     Get.offAllNamed('/feed');
   }
@@ -28,7 +31,7 @@ class _CompleteState extends State<Complete> {
             children: <Widget>[
               SizedBox(width: 0.0, height: 16.0),
               Text(
-                "안진용님",
+                "${authController.getNickname()}님",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
               ),
               Text(
