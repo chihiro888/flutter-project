@@ -25,6 +25,7 @@ dependencies:
   fluttertoast: ^8.2.4
   cloud_firestore: ^4.13.3
   image_picker: ^1.0.4
+  firebase_storage: ^11.5.3
   # sign_in_with_apple: ^5.0.0
   # flutter_facebook_auth: 4.0.0
 

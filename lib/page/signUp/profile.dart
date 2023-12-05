@@ -6,6 +6,7 @@ import 'package:sample/component/appBarDefault.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:sample/controller/authController.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:sample/provider/firebaseProvider.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -18,16 +19,48 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     AuthController authController = Get.put(AuthController());
+    FirebaseProvider firebaseProvider = FirebaseProvider();
 
     // ** State
     bool _isButtonEnabled = true;
 
-    _handleClickSignUp() {
-      print('uid = ' + authController.getUid());
-      print('nickname = ' + authController.getNickname());
-      print('gender = ' + authController.getGender());
-      print('birth = ' + authController.getBirth());
-      print(authController.getMainProfile());
+    // 회원가입
+    _handleClickSignUp() async {
+      // 대표 프로필 업로드
+      String mainProfile = authController.getMainProfile();
+      String? mainProfileUrl = await firebaseProvider.uploadImage(mainProfile);
+
+      // 서브 프로필 (5장) 업로드
+      List<String?> subProfileUrlList = [];
+      for (int i = 0; i < 5; i++) {
+        String? profile = authController.getProfile(i);
+        if (profile != null) {
+          String? imageUrl = await firebaseProvider.uploadImage(profile);
+          subProfileUrlList.add(imageUrl);
+        } else {
+          subProfileUrlList.add(null);
+        }
+      }
+
+      // 기본정보
+      String uid = authController.getUid();
+      String nickname = authController.getNickname();
+      String gender = authController.getGender();
+      String birth = authController.getBirth();
+
+      // 회원가입
+      await firebaseProvider.createUser(
+          uid,
+          nickname,
+          gender,
+          birth,
+          mainProfileUrl,
+          subProfileUrlList[0],
+          subProfileUrlList[1],
+          subProfileUrlList[2],
+          subProfileUrlList[3],
+          subProfileUrlList[4]);
+
       Get.toNamed('/complete');
     }
 
@@ -86,7 +119,7 @@ class _ProfileState extends State<Profile> {
                       elevation: 0,
                     ),
                     child: Text(
-                      '다음',
+                      '회원가입',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 16,

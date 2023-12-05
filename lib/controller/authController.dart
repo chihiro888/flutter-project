@@ -13,7 +13,11 @@ class AuthController extends GetxController {
   String _nickname = "";
   String _gender = "";
   String _birth = "";
+
+  // 대표 프로필
   RxString _mainProfile = "".obs;
+
+  // 서브 프로필 (5장)
   RxList<String> _profileList = <String>[].obs;
 
   String? getCountryCode() {
