@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sample/component/appBarDefault.dart';
@@ -26,9 +27,6 @@ class _PhoneForAuthState extends State<PhoneForAuth> {
     FirebaseProvider firebaseProvider = FirebaseProvider();
 
     try {
-      print("v = " + authController.getVerificationId());
-      print("pin = " + pin);
-
       // Create a PhoneAuthCredential using the verificationId and entered PIN
       PhoneAuthCredential credential = PhoneAuthProvider.credential(
         verificationId: authController.getVerificationId(),
@@ -57,22 +55,52 @@ class _PhoneForAuthState extends State<PhoneForAuth> {
     }
   }
 
+  late Timer _timer;
+  int _remainingTime = 10 * 60; // 10 minutes in seconds
+
+  void startTimer() {
+    _timer = Timer.periodic(Duration(seconds: 1), (Timer timer) {
+      setState(() {
+        if (_remainingTime > 0) {
+          _remainingTime--;
+        } else {
+          // Timer expired, you can handle this as needed
+          timer.cancel(); // Stop the timer
+        }
+      });
+    });
+  }
+
   // ** Life Cycle
   @override
   void initState() {
     super.initState();
     pinputFocusNode.requestFocus();
+
+    // Start the timer when the screen is loaded
+    startTimer();
   }
 
   @override
   void dispose() {
     pinputFocusNode.unfocus();
     super.dispose();
+
+    _timer.cancel(); // Cancel the timer to avoid memory leaks
   }
 
   @override
   Widget build(BuildContext context) {
     double responsiveWidth = MediaQuery.of(context).size.width * 0.8;
+
+    String formatDuration(int seconds) {
+      // Format the remaining time as 'mm:ss'
+      Duration duration = Duration(seconds: seconds);
+      String twoDigits(int n) => n.toString().padLeft(2, '0');
+      String minutes = twoDigits(duration.inMinutes.remainder(60));
+      String secondsStr = twoDigits(duration.inSeconds.remainder(60));
+      return '$minutes:$secondsStr';
+    }
 
     final defaultPinTheme = PinTheme(
       width: responsiveWidth / 7,
@@ -125,19 +153,19 @@ class _PhoneForAuthState extends State<PhoneForAuth> {
               SizedBox(width: 0.0, height: 24),
               Center(
                 child: Text(
-                  '03:00',
+                  formatDuration(_remainingTime),
                   style: TextStyle(
                     color: Color(0xFFAAAAAA),
                   ),
                 ),
               ),
               Expanded(child: SizedBox(width: 0.0, height: 8.0)),
-              Padding(
-                padding: EdgeInsets.only(bottom: 32),
-                child: Center(
-                  child: Text('인증번호를 받지 못하였나요?'),
-                ),
-              ),
+              // Padding(
+              //   padding: EdgeInsets.only(bottom: 32),
+              //   child: Center(
+              //     child: Text('인증번호를 받지 못하였나요?'),
+              //   ),
+              // ),
             ],
           ),
         ),
