@@ -69,6 +69,8 @@ class _SignInState extends State<SignIn> {
   // ** Render
   @override
   Widget build(BuildContext context) {
+    final Size screenSize = MediaQuery.of(context).size;
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -91,8 +93,10 @@ class _SignInState extends State<SignIn> {
             Center(
               child: Lottie.asset(
                 'assets/images/signIn/logo.json',
-                height: 200, // Adjust the height as per your requirement
-                width: 300, // Adjust the width as per your requirement
+                height: screenSize.height *
+                    0.2, // Adjust the height based on screen height
+                width: screenSize.width *
+                    0.7, // Adjust the width based on screen width
               ),
             ),
             SizedBox(height: 20.0),
