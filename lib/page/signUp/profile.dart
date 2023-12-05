@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sample/component/appBarDefault.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:sample/controller/authController.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -24,7 +27,8 @@ class _ProfileState extends State<Profile> {
       print('nickname = ' + authController.getNickname());
       print('gender = ' + authController.getGender());
       print('birth = ' + authController.getBirth());
-      Get.toNamed('/complete');
+      print(authController.getMainProfile());
+      // Get.toNamed('/complete');
     }
 
     return Scaffold(
@@ -54,17 +58,17 @@ class _ProfileState extends State<Profile> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   _buildMainProfilePictureBox(context),
-                  _buildProfilePictureBox(context),
-                  _buildProfilePictureBox(context),
+                  _buildProfilePictureBox(context, 0),
+                  _buildProfilePictureBox(context, 1),
                 ],
               ),
               SizedBox(height: 16),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  _buildProfilePictureBox(context),
-                  _buildProfilePictureBox(context),
-                  _buildProfilePictureBox(context),
+                  _buildProfilePictureBox(context, 2),
+                  _buildProfilePictureBox(context, 3),
+                  _buildProfilePictureBox(context, 4),
                 ],
               ),
               Expanded(
@@ -105,77 +109,109 @@ class _ProfileState extends State<Profile> {
   }
 }
 
-Widget _buildProfilePictureBox(context) {
-  double imageSize =
-      MediaQuery.of(context).size.width * 0.25; // 20% of the screen width
-  return DottedBorder(
-    color: Color(0xFFBABABA),
-    strokeWidth: 1,
-    radius: Radius.circular(8),
-    dashPattern: [6, 3],
-    child: Container(
-      width: imageSize,
-      height: imageSize,
-      decoration: BoxDecoration(
-        color: Color(0xFFF9F9F9),
-        borderRadius: BorderRadius.circular(8.0),
-      ),
-      child: Center(
-        child: Icon(
-          Icons.person,
-          color: Colors.grey,
-          size: imageSize *
-              0.5, // Adjust the icon size relative to the container size
+Widget _buildProfilePictureBox(BuildContext context, int index,
+    {bool isMainProfile = false}) {
+  AuthController authController = Get.put(AuthController());
+
+  double imageSize = MediaQuery.of(context).size.width * 0.25;
+
+  return GestureDetector(
+    onTap: () {
+      isMainProfile
+          ? authController.selectMainProfile()
+          : authController.selectProfile();
+    },
+    child: Stack(
+      children: [
+        DottedBorder(
+          color: isMainProfile ? Color(0xFF52A8F6) : Color(0xFFBABABA),
+          strokeWidth: 1,
+          radius: Radius.circular(8),
+          dashPattern: [6, 3],
+          child: Obx(() {
+            String? profilePath = isMainProfile
+                ? authController.getMainProfile()
+                : authController.getProfile(index);
+
+            return Container(
+              width: imageSize,
+              height: imageSize,
+              decoration: BoxDecoration(
+                color: Color(0xFFF9F9F9),
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: profilePath != null && profilePath != ""
+                  ? Stack(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: Center(
+                            child: Image.file(
+                              File(profilePath),
+                              fit: BoxFit
+                                  .contain, // Add this line for proper fitting
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          top: 4,
+                          right: 4,
+                          child: GestureDetector(
+                            onTap: () {
+                              isMainProfile
+                                  ? authController.clearMainProfile()
+                                  : authController.removeProfile(index);
+                            },
+                            child: Container(
+                              padding: EdgeInsets.all(4),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.grey,
+                              ),
+                              child: Icon(
+                                Icons.close,
+                                color: Colors.white,
+                                size: 16,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  : Center(
+                      child: Icon(
+                        Icons.person,
+                        color: Colors.grey,
+                        size: imageSize * 0.5,
+                      ),
+                    ),
+            );
+          }),
         ),
-      ),
+        if (isMainProfile)
+          Positioned(
+            left: 4,
+            top: 4,
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              decoration: BoxDecoration(
+                color: Color(0xFF52A8F6),
+                borderRadius: BorderRadius.circular(4),
+              ),
+              child: Text(
+                '대표',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 12,
+                ),
+              ),
+            ),
+          ),
+      ],
     ),
   );
 }
 
-Widget _buildMainProfilePictureBox(context) {
-  double imageSize = MediaQuery.of(context).size.width * 0.25;
-
-  return Stack(
-    children: [
-      DottedBorder(
-        color: Color(0xFF52A8F6),
-        strokeWidth: 1,
-        radius: Radius.circular(8),
-        dashPattern: [6, 3],
-        child: Container(
-          width: imageSize,
-          height: imageSize,
-          decoration: BoxDecoration(
-            color: Color(0xFFF9F9F9),
-            borderRadius: BorderRadius.circular(8.0),
-          ),
-          child: Center(
-            child: Icon(
-              Icons.person,
-              color: Colors.grey,
-              size: imageSize * 0.5,
-            ),
-          ),
-        ),
-      ),
-      Positioned(
-        left: 4,
-        top: 4,
-        child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-          decoration: BoxDecoration(
-            color: Color(0xFF52A8F6),
-            borderRadius: BorderRadius.circular(4),
-          ),
-          child: Text(
-            '대표',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 12,
-            ),
-          ),
-        ),
-      ),
-    ],
-  );
+Widget _buildMainProfilePictureBox(BuildContext context) {
+  return _buildProfilePictureBox(context, 0, isMainProfile: true);
 }
