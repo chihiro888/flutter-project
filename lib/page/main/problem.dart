@@ -96,7 +96,7 @@ class Problem extends StatelessWidget {
             SizedBox(width: 0.0, height: 30),
             Text(
               questionsList[quizController.currentIndex.value].question,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 30),
             ...?_buildAnswerButtons(),

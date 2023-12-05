@@ -25,21 +25,21 @@ class _HomeState extends State<Home> {
           // 광고배너의 UI 및 스타일을 추가해주세요.
           child: YourAdBannerWidget(),
         ),
-        // 두 번째: 토익 점수 표시 Row
+        SizedBox(width: 0.0, height: 16.0),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             // 현재 토익 점수
-            Text('현재 토익 점수: 300', style: TextStyle(fontSize: 18)),
+            Text('현재 토익 점수 : 300', style: TextStyle(fontSize: 18)),
             // 목표 토익 점수
-            Text('목표 토익 점수: 800', style: TextStyle(fontSize: 18)),
+            Text('목표 토익 점수 : 800', style: TextStyle(fontSize: 18)),
           ],
         ),
+        SizedBox(width: 0.0, height: 16.0),
+        Center(
+          child: Text('토익까지 남은 시간 D - 17', style: TextStyle(fontSize: 30)),
+        )
         // 세 번째: 공지사항
-        Container(
-          // 공지사항의 UI 및 스타일을 추가해주세요.
-          child: YourNoticeWidget(),
-        ),
       ],
     );
   }
@@ -57,16 +57,5 @@ class YourAdBannerWidget extends StatelessWidget {
         fit: BoxFit.cover, // 이미지를 올바르게 표시하기 위한 옵션, 필요에 따라 수정해주세요.
       ),
     );
-  }
-}
-
-// 공지사항 Widget
-class YourNoticeWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // 공지사항의 UI 및 스타일을 구현해주세요.
-    return Container(
-        // 공지사항의 내용과 스타일을 추가해주세요.
-        );
   }
 }
