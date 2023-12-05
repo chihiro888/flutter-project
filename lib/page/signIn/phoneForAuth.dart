@@ -26,33 +26,35 @@ class _PhoneForAuthState extends State<PhoneForAuth> {
     // ** Provider
     FirebaseProvider firebaseProvider = FirebaseProvider();
 
-    try {
-      // Create a PhoneAuthCredential using the verificationId and entered PIN
-      PhoneAuthCredential credential = PhoneAuthProvider.credential(
-        verificationId: authController.getVerificationId(),
-        smsCode: pin,
-      );
+    Get.toNamed('/nickname');
 
-      // Sign in the user with the credential
-      UserCredential userCredential =
-          await _auth.signInWithCredential(credential);
+    // try {
+    //   // Create a PhoneAuthCredential using the verificationId and entered PIN
+    //   PhoneAuthCredential credential = PhoneAuthProvider.credential(
+    //     verificationId: authController.getVerificationId(),
+    //     smsCode: pin,
+    //   );
 
-      String uid = userCredential.user!.uid;
-      bool isExist = await firebaseProvider.existUser(uid);
+    //   // Sign in the user with the credential
+    //   UserCredential userCredential =
+    //       await _auth.signInWithCredential(credential);
 
-      if (isExist) {
-        // User is already registered, navigate to the feed screen
-        Get.toNamed('/feed');
-      } else {
-        // User is not registered, set the UID and navigate to the nickname screen
-        authController.setUid(uid);
-        Get.toNamed('/nickname');
-      }
-    } catch (e) {
-      // Handle exceptions (e.g., FirebaseAuthException)
-      print('Error verifying code: $e');
-      // You may want to show an error message to the user
-    }
+    //   String uid = userCredential.user!.uid;
+    //   bool isExist = await firebaseProvider.existUser(uid);
+
+    //   if (isExist) {
+    //     // User is already registered, navigate to the feed screen
+    //     Get.toNamed('/feed');
+    //   } else {
+    //     // User is not registered, set the UID and navigate to the nickname screen
+    //     authController.setUid(uid);
+    //     Get.toNamed('/nickname');
+    //   }
+    // } catch (e) {
+    //   // Handle exceptions (e.g., FirebaseAuthException)
+    //   print('Error verifying code: $e');
+    //   // You may want to show an error message to the user
+    // }
   }
 
   late Timer _timer;

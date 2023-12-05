@@ -34,28 +34,30 @@ class _PhoneForSignInState extends State<PhoneForSignIn> {
   _handleClickSend() async {
     final FirebaseAuth _auth = FirebaseAuth.instance;
 
-    try {
-      String phoneNumber =
-          '${authController.getCountryCode()}${_phoneNumberController.text}';
-      await _auth.verifyPhoneNumber(
-        phoneNumber: phoneNumber,
-        verificationCompleted: (PhoneAuthCredential credential) async {
-          //
-        },
-        verificationFailed: (FirebaseAuthException e) {
-          print('Verification Failed: $e');
-        },
-        codeSent: (String verificationId, int? resendToken) {
-          authController.setVerificationId(verificationId);
-          Get.toNamed('/phoneForAuth');
-        },
-        codeAutoRetrievalTimeout: (String verificationId) {
-          print('Code Auto Retrieval Timeout: $verificationId');
-        },
-      );
-    } catch (e) {
-      print('Error sending verification code: $e');
-    }
+    Get.toNamed('/phoneForAuth');
+
+    // try {
+    //   String phoneNumber =
+    //       '${authController.getCountryCode()}${_phoneNumberController.text}';
+    //   await _auth.verifyPhoneNumber(
+    //     phoneNumber: phoneNumber,
+    //     verificationCompleted: (PhoneAuthCredential credential) async {
+    //       //
+    //     },
+    //     verificationFailed: (FirebaseAuthException e) {
+    //       print('Verification Failed: $e');
+    //     },
+    //     codeSent: (String verificationId, int? resendToken) {
+    //       authController.setVerificationId(verificationId);
+    //       Get.toNamed('/phoneForAuth');
+    //     },
+    //     codeAutoRetrievalTimeout: (String verificationId) {
+    //       print('Code Auto Retrieval Timeout: $verificationId');
+    //     },
+    //   );
+    // } catch (e) {
+    //   print('Error sending verification code: $e');
+    // }
   }
 
   // ** Life Cycle
