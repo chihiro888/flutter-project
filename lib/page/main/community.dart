@@ -53,43 +53,53 @@ class _PostCardState extends State<PostCard> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Post Header
-          ListTile(
-            leading: CircleAvatar(
-              radius: 25,
-              backgroundImage: AssetImage(
-                'assets/images/sample/user.jpg',
+          InkWell(
+            onTap: () {
+              Get.toNamed('/personProfile');
+            },
+            child: ListTile(
+              leading: CircleAvatar(
+                radius: 25,
+                backgroundImage: AssetImage(
+                  'assets/images/sample/user.jpg',
+                ),
               ),
-            ),
-            title: Row(
-              children: <Widget>[
-                Text('안진용'),
-                SizedBox(width: 6.0, height: 0.0),
-                Container(
-                  padding:
-                      EdgeInsets.only(left: 6, right: 6, top: 1, bottom: 1),
-                  decoration: BoxDecoration(
-                    color: backgroundColor,
-                    borderRadius: BorderRadius.circular(
-                      10,
+              title: Row(
+                children: <Widget>[
+                  Text('안진용'),
+                  SizedBox(width: 6.0, height: 0.0),
+                  Container(
+                    padding:
+                        EdgeInsets.only(left: 6, right: 6, top: 1, bottom: 1),
+                    decoration: BoxDecoration(
+                      color: backgroundColor,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Row(
+                      children: <Widget>[
+                        Icon(gender == 'M' ? Icons.male : Icons.female,
+                            color: Colors.white, size: 12),
+                        Text(
+                          "30",
+                          style: TextStyle(color: Colors.white, fontSize: 12),
+                        ),
+                      ],
                     ),
                   ),
-                  child: Row(
-                    children: <Widget>[
-                      Icon(gender == 'M' ? Icons.male : Icons.female,
-                          color: Colors.white, size: 12),
-                      Text(
-                        "30",
-                        style: TextStyle(color: Colors.white, fontSize: 12),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+                ],
+              ),
+              subtitle: Text(
+                '토익 300점 · 정답률 83%',
+              ),
+              trailing: GestureDetector(
+                onTap: () {
+                  // Handle the tap event on the trailing icon
+                  print('Trailing icon tapped!');
+                  // Add your logic or function call here
+                },
+                child: Icon(Icons.more_vert),
+              ),
             ),
-            subtitle: Text(
-              '토익 300점 · 정답률 83%',
-            ),
-            trailing: Icon(Icons.more_vert),
           ),
           // Post Image
           Container(

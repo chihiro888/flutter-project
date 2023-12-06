@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:sample/page/chat/chat.dart';
+import 'package:sample/page/chat/chatList.dart';
+import 'package:sample/page/community/addFeed.dart';
 import 'package:sample/page/main/Layout.dart';
+import 'package:sample/page/profile/follow.dart';
+import 'package:sample/page/profile/personProfile.dart';
 import 'package:sample/page/setting/setting.dart';
 import 'package:sample/page/signUp/emailForSignUpAccount.dart';
 import 'package:sample/page/signUp/profile.dart';
@@ -102,11 +107,26 @@ class MyApp extends StatelessWidget {
         // 레이아웃 > 랭킹
         GetPage(name: '/rank', page: () => const Layout(selectedIndex: 3)),
 
-        // 레이아웃 > 프로필
-        GetPage(name: '/profile', page: () => const Layout(selectedIndex: 4)),
+        // 레이아웃 > 나의 프로필
+        GetPage(name: '/myProfile', page: () => const Layout(selectedIndex: 4)),
 
         // 설정
         GetPage(name: '/setting', page: () => const Setting()),
+
+        // 커뮤니티 > 피드 추가
+        GetPage(name: '/addFeed', page: () => const AddFeed()),
+
+        // 커뮤니티 > 채팅 리스트
+        GetPage(name: '/chatList', page: () => const ChatList()),
+
+        // 커뮤니티 > 채팅
+        GetPage(name: '/chat', page: () => const Chat()),
+
+        // 커뮤니티 > 상대방 프로필
+        GetPage(name: '/personProfile', page: () => const PersonProfile()),
+
+        // 커뮤니티 > 팔로우/팔로잉
+        GetPage(name: '/follow', page: () => const Follow()),
       ],
     );
   }

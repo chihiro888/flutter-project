@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sample/component/appBarCommunity.dart';
 import 'package:sample/component/appBarDefault.dart';
 import 'package:sample/component/appBarHome.dart';
 import 'package:sample/component/appBarProfile.dart';
@@ -7,7 +8,7 @@ import 'package:sample/page/main/community.dart';
 import 'package:sample/page/main/rank.dart';
 import 'package:sample/page/main/home.dart';
 import 'package:sample/page/main/problem.dart';
-import 'package:sample/page/main/profile.dart';
+import 'package:sample/page/main/myProfile.dart';
 
 class Layout extends StatefulWidget {
   final int selectedIndex;
@@ -26,7 +27,7 @@ class _LayoutState extends State<Layout> {
     Problem(),
     Community(),
     Rank(),
-    Profile(),
+    MyProfile(),
   ];
 
   void _onItemTapped(int index) {
@@ -44,10 +45,18 @@ class _LayoutState extends State<Layout> {
   @override
   Widget build(BuildContext context) {
     PreferredSizeWidget appBar;
-    if (_selectedIndex == 4) {
+    if (_selectedIndex == 0) {
+      appBar = appBarHome();
+    } else if (_selectedIndex == 1) {
+      appBar = appBarHome();
+    } else if (_selectedIndex == 2) {
+      appBar = appBarCommunity();
+    } else if (_selectedIndex == 3) {
+      appBar = appBarHome();
+    } else if (_selectedIndex == 4) {
       appBar = appBarProfile();
     } else {
-      appBar = appBarHome();
+      appBar = appBarProfile();
     }
 
     return Scaffold(

@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class Profile extends StatefulWidget {
-  const Profile({Key? key}) : super(key: key);
+class MyProfile extends StatefulWidget {
+  const MyProfile({Key? key}) : super(key: key);
 
   @override
-  _ProfileState createState() => _ProfileState();
+  _MyProfileState createState() => _MyProfileState();
 }
 
-class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
+class _MyProfileState extends State<MyProfile>
+    with SingleTickerProviderStateMixin {
   String gender = 'M'; // Replace with actual gender value
   int age = 25; // Replace with actual age value
   late TabController _tabController;
@@ -17,7 +18,7 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
-    print('Profile');
+    print('MyProfile');
   }
 
   @override
@@ -101,39 +102,53 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            Column(
-              children: <Widget>[
-                Text(
-                  "20",
-                  style: TextStyle(
-                    fontSize: 24, // 원하는 폰트 크기로 조정
-                    fontWeight: FontWeight.bold, // 폰트를 굵게 설정
+            GestureDetector(
+              onTap: () {
+                // Implement the desired functionality when the "팔로잉" is tapped
+                print('Following tapped');
+                Get.toNamed('/follow');
+              },
+              child: Column(
+                children: <Widget>[
+                  Text(
+                    "20",
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                Text(
-                  "팔로잉",
-                  style: TextStyle(
-                    color: Colors.grey, // 회색으로 설정
+                  Text(
+                    "팔로잉",
+                    style: TextStyle(
+                      color: Colors.grey,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-            Column(
-              children: <Widget>[
-                Text(
-                  "7",
-                  style: TextStyle(
-                    fontSize: 24, // 원하는 폰트 크기로 조정
-                    fontWeight: FontWeight.bold, // 폰트를 굵게 설정
+            GestureDetector(
+              onTap: () {
+                // Implement the desired functionality when the "팔로잉" is tapped
+                print('Following tapped');
+                Get.toNamed('/follow');
+              },
+              child: Column(
+                children: <Widget>[
+                  Text(
+                    "7",
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                Text(
-                  "팔로워",
-                  style: TextStyle(
-                    color: Colors.grey, // 회색으로 설정
+                  Text(
+                    "팔로워",
+                    style: TextStyle(
+                      color: Colors.grey,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             Column(
               children: <Widget>[
